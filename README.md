@@ -1,55 +1,42 @@
-# hackbellBot
-
 # Team BotCoders Cybersecurity Tool
 
-## Code:
+## Requirements:
 
-```python
-# Import necessary libraries
+- Python 3.x
+- Required libraries (to be specified)
+- Web browser information (to be specified)
 
-class UserSafetyScanner:
-    def __init__(self):
-        # Initialize necessary parameters
-        pass
+## Tech Stack Used:
 
-    def scan_malicious_sites(self):
-        # Implement user safety scanning logic
-        pass
+- Python
+- Machine Learning for binary classification
+- Web crawling techniques (BFS/DFS)
+- Screenshot capturing
+- Regex for pattern matching
 
-class SearchCulprit:
-    def __init__(self):
-        # Initialize necessary parameters
-        pass
+## License:
 
-    def web_crawler(self):
-        # Implement weighted links BFS/DFS web crawler logic
-        pass
+- (Specify the license under which your code is released)
 
-class InformationChecker:
-    def __init__(self):
-        # Initialize necessary parameters
-        pass
+## Purpose:
 
-    def check_information_safety(self):
-        # Implement logic to crawl specific websites for information safety
-        pass
+With the increase in the dark web selling of data, Team BotCoders has developed a cybersecurity tool to safeguard your information. The tool performs the following operations:
 
-# Additional classes for future plans
+1. **User Safety:**
+   - Checks if the user has accessed any malicious sites in the past 24 hours.
+   - Utilizes a local scanning process with an inbuilt dataset of safe and unsafe sites.
+   - Implements a binary classification ML algorithm to scan unidentified sites using factors like "quick change algorithm," suspicious regex, etc.
 
-# Hardware integration
-class PlugAndPlay:
-    def __init__(self):
-        # Implement logic for hardware integration
-        pass
+2. **Search Culprit:**
+   - Implements a weighted links BFS/DFS web-based crawler for evidence collection.
+   - Dynamically explores links on web pages with screenshots of suspicious activity at each dig.
 
-# Tracking source ID of uploaders
-class SourceTracker:
-    def __init__(self):
-        # Implement logic for tracking source ID of uploaders
-        pass
+3. **Check Information Safety:**
+   - Crawls specific websites from a dataset, focusing on hotspots among dark web buyers.
 
-# Testing TCP/UDP packets
-class PacketTester:
-    def __init__(self):
-        # Implement logic for testing TCP/UDP packets
-        pass
+## Future Plans:
+
+- Make it plug and play with hardware integration.
+- Track down the possible source ID of uploaders.
+- Test TCP/UDP packets with user selection.
+```
