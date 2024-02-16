@@ -79,4 +79,4 @@ echo "Executing main.py..."
 # Add any loading animations or delays here if desired
 clear
 
-
+python3 main.py
