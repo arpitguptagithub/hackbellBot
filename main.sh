@@ -80,3 +80,5 @@ echo "Executing main.py..."
 clear
 
 python3 main.py
+deactivate
+echo "Virtual environment deactivated successfully."

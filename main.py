@@ -1,7 +1,7 @@
 from colorama import Fore, Style
 import sys
 import subprocess
-
+import os
 
 
 logo = """
@@ -41,7 +41,9 @@ elif user_choice == 2 :
 elif user_choice == 3 :
     subprocess.run(["python3", "PhishingCheck.py"])
 elif user_choice == 4 :
-    pass
+    directory = 'DaCrBot'
+    os.chdir(directory)
+    subprocess.run("scrapy crawl site_crawler", shell=True)
 else :
     print("Exiting the program...")
     sys.exit()
