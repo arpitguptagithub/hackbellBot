@@ -24,7 +24,8 @@ print()
 
 print(f"{Style.BRIGHT}{Fore.YELLOW}1) {Fore.RESET}Your browser history safety{Style.RESET_ALL}")
 print(f"{Style.BRIGHT}{Fore.YELLOW}2) {Fore.RESET}Is your email exposed ? {Style.RESET_ALL}")
-print(f"{Style.BRIGHT}{Fore.YELLOW}3) {Fore.RESET}Perform Dark Web Crawling [Fore Professionals]{Style.RESET_ALL}")
+print(f"{Style.BRIGHT}{Fore.YELLOW}3) {Fore.RESET}Check Phishing link.{Style.RESET_ALL}")
+print(f"{Style.BRIGHT}{Fore.YELLOW}4) {Fore.RESET}Perform Dark Web Crawling [Fore Professionals]{Style.RESET_ALL}")
 
 print()
 
@@ -38,6 +39,8 @@ if  user_choice == 1 :
 elif user_choice == 2 :
     subprocess.run(["python3", "data_breach_checker.py"])
 elif user_choice == 3 :
+    subprocess.run(["python3", "PhishingCheck.py"])
+elif user_choice == 4 :
     pass
 else :
     print("Exiting the program...")

@@ -4,6 +4,11 @@ import os
 import sqlite3
 import random
 from datetime import datetime, timedelta
+from colorama import Style, Fore
+
+print()
+time_interval = int(input("  Time interval for history capture(int-> in hrs): "))
+
 
 # Adding safe and unsafe sites
 safeSites = []
@@ -13,9 +18,9 @@ unsafeSites = []
 quickChangeAlgorithm = [0.5 , 0.7]
 
 def evaluate_site(url):
-    if ".orion" in url:
+    if ".onion" in url:
         unsafeSites.append(url)
-        print(f"Unsafe site: {url}")
+        print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}; {url}")
     else:
         # Add additional logic to evaluate the site and determine if it is safe or unsafe
         # You can use quickChangeAlgorithm or suspiciousRegex lists for more evaluation criteria
@@ -26,10 +31,10 @@ def evaluate_site(url):
         if quickChangeAlgorithm and len(quickChangeAlgorithm) >= 2:
             if reward > quickChangeAlgorithm[0]:
                 safeSites.append(url)
-                print(f"Safe site: {url}")
+                print(f"{Style.BRIGHT}{Fore.GREEN}Safe site{Fore.RESET}{Style.RESET_ALL}: {url}")
             elif reward < quickChangeAlgorithm[1]:
                 unsafeSites.append(url)
-                print(f"Unsafe site: {url}")
+                print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}; {url}")
             else:
                 # Continue monitoring or take default action
                 print(f"Continue monitoring: {url}")
@@ -57,7 +62,16 @@ def simulate_reward(url):
     return random.uniform(0.0, 0.7)
 
 # Code to scan through the web browser information
-data_path = os.path.join("/home/arpitgupta/.mozilla/firefox/2ozbvcyu.default-release/")
+data_path = os.path.expanduser("~/.mozilla/firefox/")
+
+# Iterate through file
+for subdirectory in os.listdir(data_path) :
+    subdirectory_path = os.path.join(data_path, subdirectory) 
+
+    if os.path.isdir(subdirectory_path) and 'default-' in subdirectory and subdirectory.index('default-') > 0 :
+        data_path = subdirectory_path
+        break
+
 history_db = os.path.join(data_path, 'places.sqlite')
 
 c = sqlite3.connect(history_db)
@@ -65,7 +79,7 @@ c = sqlite3.connect(history_db)
 cursor = c.cursor()
 
 # Calculate the timestamp for 24 hours ago
-twenty_four_hours_ago = datetime.utcnow() - timedelta(hours=1)
+twenty_four_hours_ago = datetime.utcnow() - timedelta(hours=time_interval)
 timestamp_24_hours_ago = int(twenty_four_hours_ago.timestamp() * 1e6)
 
 select_statement = "SELECT url, visit_count FROM moz_places WHERE last_visit_date >= ?;"
@@ -79,7 +93,7 @@ for url, count in results:
     if url in safeSites:
         continue
     elif url in unsafeSites:
-        print(f"Unsafe site: {url}")
+        print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}; {url}")
     else:
         evaluate_site(url)
 
