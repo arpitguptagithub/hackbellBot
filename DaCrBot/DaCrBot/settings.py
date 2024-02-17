@@ -22,6 +22,7 @@ ROBOTSTXT_OBEY = False
 DOWNLOAD_HANDLERS = {
     "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
     "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    'DaCrBot.middlewares.ProxyMiddleware': 410,
 }
 
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
@@ -50,6 +51,11 @@ TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 #    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 #    "Accept-Language": "en",
 #}
+
+# HTTP_PROXY = 'http://127.0.0.1:8123'
+
+
+# DEPTH_LIMIT = 5
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
@@ -97,8 +103,10 @@ TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Output settings for CSV
-FEED_FORMAT = 'csv'
-FEED_URI = 'output.csv'
+# FEED_FORMAT = 'csv'
+# FEED_URI = 'output.csv'
+
+CLOSESPIDER_TIMEOUT = 600
 
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"

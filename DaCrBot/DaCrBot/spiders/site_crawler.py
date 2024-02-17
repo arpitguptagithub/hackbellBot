@@ -4,7 +4,6 @@ from scrapy.http import Request
 from playwright.async_api import async_playwright
 import scrapy
 import os
-import time
 from DaCrBot.items import SiteDataItem
 
 CHECK_STRING = "binary"
@@ -64,14 +63,7 @@ class SiteCrawlerSpider(CrawlSpider):
                 await browser.close()
 
             self.ongoing_tasks -= 1
-            time.sleep(5)
             yield data_item
-
-            yield scrapy.Request(response.url, meta=dict(
-                playwright=True,
-                playwright_include_page=True,
-                errback=self.errback,
-            ))
 
             # Check if maximum iterations reached
             if self.serial_number >= self.max_iterations and self.ongoing_tasks == 0:

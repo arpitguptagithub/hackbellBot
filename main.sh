@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Output file for htop details
+output_file="htop_details.txt"
+
+# Start monitoring CPU and memory usage
+echo "Start monitoring CPU and memory usage..."
+htop -d 2 -t -u anonscien -p $$ --no-color > "$output_file" & 
+# Replace "your_username" with your actual username
+htop_pid=$!
+
 # Function to check if a command is available
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -80,5 +89,11 @@ echo "Executing main.py..."
 clear
 
 python3 main.py
-deactivate
-echo "Virtual environment deactivated successfully."
+
+# Stop monitoring
+echo "Monitoring stopped."
+
+# Print details
+echo -e "\nCPU and Memory Usage Details:"
+cat "$output_file"
+
