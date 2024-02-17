@@ -25,7 +25,7 @@ print()
 print(f"{Style.BRIGHT}{Fore.YELLOW}1) {Fore.RESET}Your browser history safety{Style.RESET_ALL}")
 print(f"{Style.BRIGHT}{Fore.YELLOW}2) {Fore.RESET}Is your email exposed ? {Style.RESET_ALL}")
 print(f"{Style.BRIGHT}{Fore.YELLOW}3) {Fore.RESET}Check Phishing link.{Style.RESET_ALL}")
-print(f"{Style.BRIGHT}{Fore.YELLOW}4) {Fore.RESET}Perform Deep Crawling [Fore Professionals]{Style.RESET_ALL}")
+print(f"{Style.BRIGHT}{Fore.YELLOW}4) {Fore.RESET}Perform Deep Crawling [For Professionals]{Style.RESET_ALL}")
 
 print()
 

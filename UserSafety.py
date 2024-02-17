@@ -20,7 +20,7 @@ quickChangeAlgorithm = [0.5 , 0.7]
 def evaluate_site(url):
     if ".onion" in url:
         unsafeSites.append(url)
-        print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}; {url}")
+        print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}: {url}")
     else:
         # Add additional logic to evaluate the site and determine if it is safe or unsafe
         # You can use quickChangeAlgorithm or suspiciousRegex lists for more evaluation criteria
@@ -34,7 +34,7 @@ def evaluate_site(url):
                 print(f"{Style.BRIGHT}{Fore.GREEN}Safe site{Fore.RESET}{Style.RESET_ALL}: {url}")
             elif reward < quickChangeAlgorithm[1]:
                 unsafeSites.append(url)
-                print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}; {url}")
+                print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}: {url}")
             else:
                 # Continue monitoring or take default action
                 print(f"Continue monitoring: {url}")
@@ -49,6 +49,9 @@ def simulate_reward(url):
         "important": 0.9,
         "security": 0.85,
         "entertainment": 0.7,
+        "youtube": 0.9,
+        "google": 0.9,
+        "github": 0.9,
         "shopping": 0.8,
         "education": 0.75
     }
@@ -93,7 +96,7 @@ for url, count in results:
     if url in safeSites:
         continue
     elif url in unsafeSites:
-        print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}; {url}")
+        print(f"{Style.BRIGHT}{Fore.RED}Unsafe site{Style.RESET_ALL}: {url}")
     else:
         evaluate_site(url)
 
